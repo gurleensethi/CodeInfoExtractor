@@ -27,7 +27,7 @@ public class RegexUtils {
 
         while (start < source.length() && matcher.find(start)) {
             count += 1;
-            start = matcher.start() + 1;
+            start = matcher.end() + 1;
             lines += source.substring(matcher.start(), matcher.end()).split("\n").length;
         }
 

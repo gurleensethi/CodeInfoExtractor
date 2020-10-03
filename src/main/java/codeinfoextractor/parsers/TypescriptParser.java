@@ -14,7 +14,7 @@ public class TypescriptParser implements ILanguageParser {
         int todos = 0;
 
         singleLineComments += RegexUtils.countOccurrences(data, "//.*");
-        todos += RegexUtils.countOccurrences(data, "//TODO:.*");
+        todos += RegexUtils.countOccurrences(data, "//[ ]?TODO:.*");
 
         // Reference for regex: https://blog.ostermiller.org/finding-comments-in-source-code-using-regular-expressions/
         Pair<Integer, Integer> blockCommentsResult = RegexUtils.countOccurrencesWithLines(data, "/\\*([^*]|[\\r\\n]|(\\*+([^*/]|[\\r\\n])))*\\*+/");
