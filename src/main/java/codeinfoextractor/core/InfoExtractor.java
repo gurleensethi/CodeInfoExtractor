@@ -39,7 +39,7 @@ public class InfoExtractor {
                 })
                 .map(file -> {
                     final ILanguageParser parser = this.languageParsers.get(file.getFileExtension()).get();
-                    return parser.parse(file.getLines());
+                    return parser.parse(file.getData());
                 })
                 .collect(Collectors.toList());
     }

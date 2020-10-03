@@ -17,19 +17,20 @@ public class FileProcessor {
 
     private ProcessedFile fileToProcessedFile(File file) {
         try {
-            final List<String> lines = new ArrayList<>();
+            final StringBuilder stringBuilder = new StringBuilder();
             final BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
             String line = null;
 
             while ((line = bufferedReader.readLine()) != null) {
-                lines.add(line);
+                stringBuilder.append(line)
+                        .append("\n");
             }
 
             final int indexOfExtension = file.getName().lastIndexOf('.');
             final String name = file.getName().substring(0, indexOfExtension);
             final String extension = file.getName().substring(indexOfExtension + 1);
 
-            return new ProcessedFile(name, extension, lines);
+            return new ProcessedFile(name, extension, stringBuilder.toString());
         } catch (Exception e) {
             e.printStackTrace();
             return null;

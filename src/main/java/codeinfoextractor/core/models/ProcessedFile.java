@@ -1,24 +1,22 @@
 package codeinfoextractor.core.models;
 
-import java.util.List;
-
 public class ProcessedFile {
     private String fileName;
     private String fileExtension;
-    private List<String> lines;
+    private String data;
 
-    public ProcessedFile(String fileName, String fileExtension, List<String> lines) {
+    public ProcessedFile(String fileName, String fileExtension, String data) {
         this.fileName = fileName;
         this.fileExtension = fileExtension;
-        this.lines = lines;
+        this.data = data;
     }
 
-    public List<String> getLines() {
-        return lines;
+    public String getData() {
+        return data;
     }
 
-    public void setLines(List<String> lines) {
-        this.lines = lines;
+    public void setData(String data) {
+        this.data = data;
     }
 
     public String getFileName() {

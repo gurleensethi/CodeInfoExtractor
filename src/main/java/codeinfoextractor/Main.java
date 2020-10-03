@@ -23,7 +23,7 @@ public class Main {
         List<ProcessedFile> processedFileList = fileProcessor.fromArgs(args);
 
         InfoExtractor infoExtractor = new InfoExtractor();
-        infoExtractor.registerParser("gradle", JavaParser::new);
+        infoExtractor.registerParser("java", JavaParser::new);
         final List<LanguageParseResult> results = infoExtractor.parseFiles(processedFileList);
         for (LanguageParseResult result : results) {
             System.out.println(result);
