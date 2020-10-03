@@ -25,7 +25,11 @@ public class FileProcessor {
                 lines.add(line);
             }
 
-            return new ProcessedFile(file.getName(), lines);
+            final int indexOfExtension = file.getName().lastIndexOf('.');
+            final String name = file.getName().substring(0, indexOfExtension);
+            final String extension = file.getName().substring(indexOfExtension + 1);
+
+            return new ProcessedFile(name, extension, lines);
         } catch (Exception e) {
             e.printStackTrace();
             return null;
@@ -36,10 +40,11 @@ public class FileProcessor {
         logger.info("Checking for " + args.length + " file(s).");
 
         final List<ProcessedFile> files = Arrays.stream(args)
-                // Filter out files that don't contain an extension.
                 .filter(fileName -> {
                     int index = fileName.lastIndexOf(".");
-                    return index != -1 && index != fileName.length() - 1;
+                    return index != -1
+                            && index != fileName.length() - 1
+                            && fileName.charAt(0) != '.';
                 })
                 .map(File::new)
                 .filter(File::exists)

@@ -1,7 +1,10 @@
 package codeinfoextractor;
 
+import codeinfoextractor.core.InfoExtractor;
 import codeinfoextractor.core.fileprocessor.FileProcessor;
+import codeinfoextractor.core.models.LanguageParseResult;
 import codeinfoextractor.core.models.ProcessedFile;
+import codeinfoextractor.parsers.JavaParser;
 
 import java.util.List;
 import java.util.logging.Logger;
@@ -16,6 +19,14 @@ public class Main {
         }
 
         final FileProcessor fileProcessor = new FileProcessor();
+
         List<ProcessedFile> processedFileList = fileProcessor.fromArgs(args);
+
+        InfoExtractor infoExtractor = new InfoExtractor();
+        infoExtractor.registerParser("gradle", JavaParser::new);
+        final List<LanguageParseResult> results = infoExtractor.parseFiles(processedFileList);
+        for (LanguageParseResult result : results) {
+            System.out.println(result);
+        }
     }
 }

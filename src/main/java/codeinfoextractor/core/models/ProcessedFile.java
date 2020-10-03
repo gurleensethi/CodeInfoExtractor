@@ -4,10 +4,12 @@ import java.util.List;
 
 public class ProcessedFile {
     private String fileName;
+    private String fileExtension;
     private List<String> lines;
 
-    public ProcessedFile(String fileName, List<String> lines) {
+    public ProcessedFile(String fileName, String fileExtension, List<String> lines) {
         this.fileName = fileName;
+        this.fileExtension = fileExtension;
         this.lines = lines;
     }
 
@@ -25,5 +27,13 @@ public class ProcessedFile {
 
     public void setFileName(String fileName) {
         this.fileName = fileName;
+    }
+
+    public String getFileExtension() {
+        return fileExtension;
+    }
+
+    public void setFileExtension(String fileExtension) {
+        this.fileExtension = fileExtension;
     }
 }

@@ -58,4 +58,17 @@ public class LanguageParseResult {
     public void setTodos(int todos) {
         this.todos = todos;
     }
+
+
+    @Override
+    public String toString() {
+        return "LanguageParseResult{" +
+                "lines=" + lines +
+                ", commentLines=" + commentLines +
+                ", singleLineComments=" + singleLineComments +
+                ", commentLinesInBlock=" + commentLinesInBlock +
+                ", blockLineComments=" + blockLineComments +
+                ", todos=" + todos +
+                '}';
+    }
 }
