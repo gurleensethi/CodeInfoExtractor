@@ -59,16 +59,14 @@ public class LanguageParseResult {
         this.todos = todos;
     }
 
-
     @Override
     public String toString() {
-        return "LanguageParseResult{" +
-                "lines=" + lines +
-                ", commentLines=" + commentLines +
-                ", singleLineComments=" + singleLineComments +
-                ", commentLinesInBlock=" + commentLinesInBlock +
-                ", blockLineComments=" + blockLineComments +
-                ", todos=" + todos +
-                '}';
+        return "Total # of lines: " + lines +
+                "\nTotal # of comment lines: " + commentLines +
+                "\nTotal # of single line comments: " + singleLineComments +
+                "\nTotal # of comment lines within block comments: " + commentLinesInBlock +
+                "\nTotal # of block line comments: " + blockLineComments +
+                "\nTotal # of TODO’s: " + todos;
     }
+
 }
