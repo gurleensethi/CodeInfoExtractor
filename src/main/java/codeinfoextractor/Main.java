@@ -5,6 +5,7 @@ import codeinfoextractor.core.fileprocessor.FileProcessor;
 import codeinfoextractor.core.models.LanguageParseResult;
 import codeinfoextractor.core.models.ProcessedFile;
 import codeinfoextractor.parsers.JavaParser;
+import codeinfoextractor.parsers.TypescriptParser;
 
 import java.util.List;
 import java.util.logging.Logger;
@@ -24,6 +25,7 @@ public class Main {
 
         InfoExtractor infoExtractor = new InfoExtractor();
         infoExtractor.registerParser("java", JavaParser::new);
+        infoExtractor.registerParser("ts", TypescriptParser::new);
         final List<LanguageParseResult> results = infoExtractor.parseFiles(processedFileList);
         for (LanguageParseResult result : results) {
             System.out.println(result);
