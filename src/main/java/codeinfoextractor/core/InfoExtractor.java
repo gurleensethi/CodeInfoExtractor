@@ -23,6 +23,11 @@ public class InfoExtractor {
         this.languageParsers.put(extension, parser);
     }
 
+    public LanguageParseResult parseInfoFromFile(ProcessedFile file) {
+        final ILanguageParser parser = this.languageParsers.get(file.getFileExtension()).get();
+        return parser.parse(file.getData());
+    }
+
     public List<LanguageParseResult> parseFiles(List<ProcessedFile> files) {
         return files.parallelStream()
                 .filter(file -> {
@@ -37,10 +42,7 @@ public class InfoExtractor {
                     }
                     return hasRegisteredParser;
                 })
-                .map(file -> {
-                    final ILanguageParser parser = this.languageParsers.get(file.getFileExtension()).get();
-                    return parser.parse(file.getData());
-                })
+                .map(this::parseInfoFromFile)
                 .collect(Collectors.toList());
     }
 }
