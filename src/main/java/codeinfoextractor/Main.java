@@ -8,6 +8,7 @@ import codeinfoextractor.parsers.JavaParser;
 import codeinfoextractor.parsers.PythonParser;
 import codeinfoextractor.parsers.TypescriptParser;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -22,7 +23,7 @@ public class Main {
 
         final FileLoader fileLoader = new FileLoader();
 
-        List<ProcessedFile> processedFileList = fileLoader.fromArgs(args);
+        List<ProcessedFile> processedFileList = fileLoader.fromFilePaths(Arrays.asList(args));
 
         InfoExtractor infoExtractor = new InfoExtractor();
         infoExtractor.registerParser("java", JavaParser::new);

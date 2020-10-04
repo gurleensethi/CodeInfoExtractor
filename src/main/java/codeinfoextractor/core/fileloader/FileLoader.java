@@ -36,10 +36,21 @@ public class FileLoader {
         }
     }
 
-    public List<ProcessedFile> fromArgs(String[] args) {
-        logger.info("Checking for " + args.length + " file(s).");
+    /**
+     * Processes files from the file paths provided.
+     * Filters files based on their validity.
+     *
+     * A file is valid if it:
+     *   - has a valid name.
+     *   - has a valid extension.
+     *
+     * @param filePaths list of file paths to process.
+     * @return list of ProcessedFile objects containing data for valid files.
+     */
+    public List<ProcessedFile> fromFilePaths(List<String> filePaths) {
+        logger.info("Checking for " + filePaths.size() + " file(s).");
 
-        final List<ProcessedFile> files = Arrays.stream(args)
+        final List<ProcessedFile> files = filePaths.stream()
                 .filter(fileName -> {
                     int index = fileName.lastIndexOf(".");
                     return index != -1
