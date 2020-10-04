@@ -10,6 +10,9 @@ import java.util.Objects;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
+/**
+ * Helps in loading code files and filtering out ones that are inappropriate (such as files with no extensions).
+ */
 public class FileLoader {
     private static final Logger logger = Logger.getLogger(FileLoader.class.getName());
 
