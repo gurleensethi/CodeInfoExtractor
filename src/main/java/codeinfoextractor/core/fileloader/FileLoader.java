@@ -1,4 +1,4 @@
-package codeinfoextractor.core.fileprocessor;
+package codeinfoextractor.core.fileloader;
 
 import codeinfoextractor.core.models.ProcessedFile;
 
@@ -11,8 +11,8 @@ import java.util.Objects;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
-public class FileProcessor {
-    private static final Logger logger = Logger.getLogger(FileProcessor.class.getName());
+public class FileLoader {
+    private static final Logger logger = Logger.getLogger(FileLoader.class.getName());
 
     private ProcessedFile fileToProcessedFile(File file) {
         try {

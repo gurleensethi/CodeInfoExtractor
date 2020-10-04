@@ -1,7 +1,7 @@
 package codeinfoextractor;
 
 import codeinfoextractor.core.InfoExtractor;
-import codeinfoextractor.core.fileprocessor.FileProcessor;
+import codeinfoextractor.core.fileloader.FileLoader;
 import codeinfoextractor.core.models.LanguageParseResult;
 import codeinfoextractor.core.models.ProcessedFile;
 import codeinfoextractor.parsers.JavaParser;
@@ -20,9 +20,9 @@ public class Main {
             return;
         }
 
-        final FileProcessor fileProcessor = new FileProcessor();
+        final FileLoader fileLoader = new FileLoader();
 
-        List<ProcessedFile> processedFileList = fileProcessor.fromArgs(args);
+        List<ProcessedFile> processedFileList = fileLoader.fromArgs(args);
 
         InfoExtractor infoExtractor = new InfoExtractor();
         infoExtractor.registerParser("java", JavaParser::new);
