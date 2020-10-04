@@ -1,5 +1,7 @@
 # CodeInfoExtractor
 
+An application for parsing out comment information from source code.
+
 ## Running the project
 
 ### From the command line using gradle
