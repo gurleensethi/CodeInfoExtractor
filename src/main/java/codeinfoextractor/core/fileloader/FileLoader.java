@@ -14,6 +14,14 @@ import java.util.stream.Collectors;
 public class FileLoader {
     private static final Logger logger = Logger.getLogger(FileLoader.class.getName());
 
+    /**
+     * Generates a ProcessedFile object from File.
+     * The file to be processed provided should exist and be valid.
+     * In case of invalid files null is returned.
+     *
+     * @param file to convert
+     * @return ProcessedFile object if file is valid or null.
+     */
     private ProcessedFile fileToProcessedFile(File file) {
         try {
             final StringBuilder stringBuilder = new StringBuilder();
