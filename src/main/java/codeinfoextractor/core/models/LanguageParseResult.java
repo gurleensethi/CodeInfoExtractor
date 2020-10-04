@@ -1,11 +1,40 @@
 package codeinfoextractor.core.models;
 
+/**
+ * Details of the parsing result for a file.
+ *
+ * Contains information regarding the comments for a piece of source code.
+ */
 public class LanguageParseResult {
+    /**
+     * Total lines of source code.
+     */
     private int lines;
+
+    /**
+     * Total lines of comments.
+     * Includes single line and lines in block comments.
+     */
     private int commentLines;
+
+    /**
+     * Single line comments in source code.
+     */
     private int singleLineComments;
-    private int commentLinesInBlock;
+
+    /**
+     * Total number of block comments.
+     */
     private int blockLineComments;
+
+    /**
+     * Total lines of contained inside block comments.
+     */
+    private int commentLinesInBlock;
+
+    /**
+     * Total number of todos.
+     */
     private int todos;
 
     public LanguageParseResult() {
