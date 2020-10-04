@@ -1,11 +1,10 @@
 package codeinfoextractor.core.fileloader;
 
-import codeinfoextractor.core.models.ProcessedFile;
+import codeinfoextractor.core.models.SourceCodeFile;
 
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 import java.util.logging.Logger;
@@ -15,14 +14,14 @@ public class FileLoader {
     private static final Logger logger = Logger.getLogger(FileLoader.class.getName());
 
     /**
-     * Generates a ProcessedFile object from File.
+     * Generates a SourceCodeFile object from File.
      * The file to be processed provided should exist and be valid.
      * In case of invalid files null is returned.
      *
      * @param file to convert
      * @return ProcessedFile object if file is valid or null.
      */
-    private ProcessedFile fileToProcessedFile(File file) {
+    private SourceCodeFile fileToSourceCodeFile(File file) {
         try {
             final StringBuilder stringBuilder = new StringBuilder();
             final BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
@@ -37,7 +36,7 @@ public class FileLoader {
             final String name = file.getName().substring(0, indexOfExtension);
             final String extension = file.getName().substring(indexOfExtension + 1);
 
-            return new ProcessedFile(name, extension, stringBuilder.toString());
+            return new SourceCodeFile(name, extension, stringBuilder.toString());
         } catch (Exception e) {
             e.printStackTrace();
             return null;
@@ -55,10 +54,10 @@ public class FileLoader {
      * @param filePaths list of file paths to process.
      * @return list of ProcessedFile objects containing data for valid files.
      */
-    public List<ProcessedFile> fromFilePaths(List<String> filePaths) {
+    public List<SourceCodeFile> fromFilePaths(List<String> filePaths) {
         logger.info("Checking for " + filePaths.size() + " file(s).");
 
-        final List<ProcessedFile> files = filePaths.stream()
+        final List<SourceCodeFile> files = filePaths.stream()
                 .filter(fileName -> {
                     int index = fileName.lastIndexOf(".");
                     return index != -1
@@ -67,7 +66,7 @@ public class FileLoader {
                 })
                 .map(File::new)
                 .filter(File::exists)
-                .map(this::fileToProcessedFile)
+                .map(this::fileToSourceCodeFile)
                 .filter(Objects::nonNull)
                 .collect(Collectors.toList());
 

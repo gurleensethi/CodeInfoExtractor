@@ -2,7 +2,7 @@ package codeinfoextractor.core;
 
 import codeinfoextractor.core.languageparser.ILanguageParser;
 import codeinfoextractor.core.models.LanguageParseResult;
-import codeinfoextractor.core.models.ProcessedFile;
+import codeinfoextractor.core.models.SourceCodeFile;
 
 import java.util.HashMap;
 import java.util.List;
@@ -23,12 +23,12 @@ public class InfoExtractor {
         this.languageParsers.put(extension, parser);
     }
 
-    public LanguageParseResult parseInfoFromFile(ProcessedFile file) {
+    public LanguageParseResult parseInfoFromFile(SourceCodeFile file) {
         final ILanguageParser parser = this.languageParsers.get(file.getFileExtension()).get();
         return parser.parse(file.getData());
     }
 
-    public List<LanguageParseResult> parseFiles(List<ProcessedFile> files) {
+    public List<LanguageParseResult> parseFiles(List<SourceCodeFile> files) {
         return files.parallelStream()
                 .filter(file -> {
                     boolean hasRegisteredParser = this.languageParsers.containsKey(file.getFileExtension());

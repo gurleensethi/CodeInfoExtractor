@@ -45,7 +45,7 @@ infoExtractor.registerParser("java", JavaParser::new);
 infoExtractor.registerParser("ts", TypescriptParser::new);
 infoExtractor.registerParser("py", PythonParser::new);
 
-final List<LanguageParseResult> results = infoExtractor.parseFiles(processedFileList);
+final List<LanguageParseResult> results = infoExtractor.parseFiles(sourceCodeFileList);
 ```
 
 ## Adding New Parsers
