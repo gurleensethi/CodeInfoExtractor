@@ -26,6 +26,30 @@ Example usage:
 ./gradlew run --args "samplefiles/SampleFile.java samplefiles/sample-file.ts samplefiles/sample_file.py"
 ```
 
+### Using `jar` file
+
+#### Prebuilt `jar` file
+
+Download the jar file from the latest [release](https://github.com/gurleensethi/CodeInfoExtractor/releases).
+
+```cmd
+java -jar codeinfoextractor.jar samplefiles/SampleFile.java
+```
+
+#### Manually building `jar` file
+
+Build the jar.
+
+```cmd
+./gradle jar
+```
+
+Run using built jar (The built jar file can be found in `build/libs/`).
+
+```cmd
+java -jar build/libs/codeinfoextractor.jar samplefiles/SampleFile.java
+```
+
 ## Design Overview
 
 The core consists of 3 main parts, `InfoExtractor`, `FileLoader` and `ILanguageParser`. Below is a diagramtic representation of the design.
