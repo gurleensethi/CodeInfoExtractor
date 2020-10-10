@@ -69,7 +69,11 @@ public class InfoExtractor {
                     }
                     return hasRegisteredParser;
                 })
-                .map(this::parseInfoFromFile)
+                .map(sourceCodeFile -> {
+                    LanguageParseResult result = this.parseInfoFromFile(sourceCodeFile);
+                    result.setSourceCodeFile(sourceCodeFile);
+                    return result;
+                })
                 .collect(Collectors.toList());
     }
 }

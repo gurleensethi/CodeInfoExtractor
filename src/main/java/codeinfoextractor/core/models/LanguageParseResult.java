@@ -2,10 +2,12 @@ package codeinfoextractor.core.models;
 
 /**
  * Details of the parsing result for a file.
- *
+ * <p>
  * Contains information regarding the comments for a piece of source code.
  */
 public class LanguageParseResult {
+    private SourceCodeFile sourceCodeFile;
+
     /**
      * Total lines of source code.
      */
@@ -88,14 +90,26 @@ public class LanguageParseResult {
         this.todos = todos;
     }
 
+    public SourceCodeFile getSourceCodeFile() {
+        return sourceCodeFile;
+    }
+
+    public void setSourceCodeFile(SourceCodeFile sourceCodeFile) {
+        this.sourceCodeFile = sourceCodeFile;
+    }
+
     @Override
     public String toString() {
-        return "Total # of lines: " + lines +
+        return "\n---------- Result for '"
+                + this.sourceCodeFile.getFileName() + "." + this.sourceCodeFile.getFileExtension() +
+                "' ----------\n" +
+                "Total # of lines: " + lines +
                 "\nTotal # of comment lines: " + commentLines +
                 "\nTotal # of single line comments: " + singleLineComments +
                 "\nTotal # of comment lines within block comments: " + commentLinesInBlock +
                 "\nTotal # of block line comments: " + blockLineComments +
-                "\nTotal # of TODO’s: " + todos;
+                "\nTotal # of TODO’s: " + todos +
+                "\n--------------------------------------------------";
     }
 
 }
