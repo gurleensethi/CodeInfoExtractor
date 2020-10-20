@@ -24,7 +24,7 @@ public class FileLoader {
      * @param file to convert
      * @return ProcessedFile object if file is valid or null.
      */
-    private SourceCodeFile fileToSourceCodeFile(File file) {
+    public SourceCodeFile fileToSourceCodeFile(File file) {
         try {
             final StringBuilder stringBuilder = new StringBuilder();
             final BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
