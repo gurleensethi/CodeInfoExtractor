@@ -13,11 +13,11 @@ public class JavaParser implements ILanguageParser {
         int blockLineComments = 0;
         int todos = 0;
 
-        singleLineComments += RegexUtils.countOccurrences(data, "//.*");
-        todos += RegexUtils.countOccurrences(data, "//[ ]?TODO:.*");
+        singleLineComments += RegexUtils.countOccurrences(data, RegexUtils.JAVA_SINGLE_LINE_COMMENT_REGEX);
+        todos += RegexUtils.countOccurrences(data, RegexUtils.JAVA_TODOS_REGEX);
 
         // Reference for regex: https://blog.ostermiller.org/finding-comments-in-source-code-using-regular-expressions/
-        Pair<Integer, Integer> blockCommentsResult = RegexUtils.countOccurrencesWithLines(data, "/\\*([^*]|[\\r\\n]|(\\*+([^*/]|[\\r\\n])))*\\*+/");
+        Pair<Integer, Integer> blockCommentsResult = RegexUtils.countOccurrencesWithLines(data, RegexUtils.JAVA_MULTI_LINE_COMMENT_REGEX);
         blockLineComments += blockCommentsResult.getOne();
         commentLinesInBlock += blockCommentsResult.getTwo();
 

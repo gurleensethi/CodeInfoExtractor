@@ -13,11 +13,11 @@ public class PythonParser implements ILanguageParser {
         int blockLineComments = 0;
         int todos = 0;
 
-        allComments += RegexUtils.countOccurrences(data, "#.*");
-        todos += RegexUtils.countOccurrences(data, "#[ ]?TODO:.*");
+        allComments += RegexUtils.countOccurrences(data, RegexUtils.PYTHON_SINGLE_LINE_COMMENT_REGEX);
+        todos += RegexUtils.countOccurrences(data, RegexUtils.PYTHON_TODOS_REGEX);
 
         Pair<Integer, Integer> blockCommentsResult =
-                RegexUtils.countOccurrencesWithLines(data, "( *[#]{1,}.*\\n?){2,}"); // Also matches -> ( *#.*\n) *#.*\n
+                RegexUtils.countOccurrencesWithLines(data, RegexUtils.PYTHON_MULTI_LINE_COMMENT_REGEX); // Also matches -> ( *#.*\n) *#.*\n
         blockLineComments += blockCommentsResult.getOne();
         commentLinesInBlock += blockCommentsResult.getTwo();
 

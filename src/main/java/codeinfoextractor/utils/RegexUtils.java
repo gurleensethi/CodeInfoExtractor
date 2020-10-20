@@ -4,6 +4,16 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class RegexUtils {
+    public static final String JAVA_SINGLE_LINE_COMMENT_REGEX = "//.*";
+    public static final String JAVA_MULTI_LINE_COMMENT_REGEX = "\"/\\\\*([^*]|[\\\\r\\\\n]|(\\\\*+([^*/]|[\\\\r\\\\n])))*\\\\*+/\"";
+    public static final String JAVA_TODOS_REGEX = "//[ ]?TODO:.*";
+    public static final String TYPESCRIPT_SINGLE_LINE_COMMENT_REGEX = "//.*";
+    public static final String TYPESCRIPT_MULTI_LINE_COMMENT_REGEX = "\"/\\\\*([^*]|[\\\\r\\\\n]|(\\\\*+([^*/]|[\\\\r\\\\n])))*\\\\*+/\"";
+    public static final String TYPESCRIPT_TODOS_REGEX = "//[ ]?TODO:.*";
+    public static final String PYTHON_SINGLE_LINE_COMMENT_REGEX = "#.*";
+    public static final String PYTHON_MULTI_LINE_COMMENT_REGEX = "( *[#]{1,}.*\\n?){2,}";
+    public static final String PYTHON_TODOS_REGEX = "#[ ]?TODO:.*";
+
     public static int countOccurrences(String source, String regex) {
         int count = 0;
         int start = 0;
